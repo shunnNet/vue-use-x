@@ -16,6 +16,7 @@ export default defineConfig({
     alias: {
       '~': resolve(__dirname, './src'),
       '@vue-use-x/modal': resolve(__dirname, '../../packages/modal/src'),
+      '@vue-use-x/common': resolve(__dirname, '../../packages/common/src'),
     },
 
   },

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useModal } from '@vue-use-x/modal'
 import { ElButton, ElMessage } from 'element-plus'
+import { useRefModal } from './composables/useRefModal';
+import { shallowRef } from 'vue';
 
 type ModalData = { name: string, age?: number }
 
@@ -24,9 +26,15 @@ const patchWithFunction = () => {
     }
   })
 }
-
-const setReturn = () => {
-  modal.setReturnValue('I am return value set by setReturnValue')
+const dialogRef = shallowRef<HTMLDialogElement | null>(null)
+const dialog = useRefModal(dialogRef, {
+  initData: { message: 'I am dialog' },
+  resetDataAfterClose: true,
+})
+const onClickOpenDialog = async () => {
+  const result = await dialog.open({ message: 'I am dialog Data' })
+  console.log('dialog closed with message:', result);
+  console.log('dialog return:', dialogRef.value?.returnValue);
 }
 </script>
 <template>
@@ -42,6 +50,13 @@ const setReturn = () => {
     <h4>Return Value</h4>
     <pre v-text="modal.returnValue" />
   </div>
+  <div>
+    <button type="button" @click="onClickOpenDialog">Open Dialog</button>
+  </div>
+  <dialog ref="dialogRef">
+    {{ dialog.data.message }}
+    <button @click="dialog.close('I am returnValue')">Close</button>
+  </dialog>
   <ElDialog v-model="modal.visible">
     Hello
     <ElButton
@@ -61,12 +76,6 @@ const setReturn = () => {
       @click="patchWithFunction"
     >
       Patch with function
-    </ElButton>
-    <ElButton
-      type="success"
-      @click="setReturn"
-    >
-    setReturn
     </ElButton>
   </ElDialog>
 </template>
