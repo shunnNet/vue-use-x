@@ -15,8 +15,20 @@ export default defineConfig({
       {
         text: 'Modal',
         items: [
-          { text: 'useModal', link: '/use-modal' },
-          { text: 'useRefModal', link: '/use-ref-modal' },
+          { text: 'useModal', link: '/modal/use-modal' },
+          { text: 'useRefModal', link: '/modal/use-ref-modal' },
+        ],
+      },
+      {
+        text: 'Common',
+        items: [
+          {
+            text: 'Context',
+            items: [
+              { text: 'createContext', link: '/common/context/createContext' },
+              { text: 'ensureInjection', link: '/common/context/ensureInjection' },
+            ]
+          },
         ],
       },
       // {
