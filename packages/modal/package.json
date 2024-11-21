@@ -36,5 +36,8 @@
   },
   "devDependencies": {
     "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@vue-use-x/common": "workspace:^"
   }
 }

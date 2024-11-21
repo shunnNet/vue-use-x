@@ -1,7 +1,31 @@
 import { computed, effectScope, reactive, ref, watch } from 'vue'
 import { TModalData, TModal } from './types'
-import { defer, TDefer } from '../utils/defer'
+import { defer, TDefer } from '@vue-use-x/common'
 
+export type TUseModalOptions<TData extends TModalData, TReturnValue> = {
+/**
+   * The initial data of the modal, should be a plain object like `{}`.
+   *
+   * @default {}
+   */
+  initData?: TData
+  /**
+ * Should the data be reset after the modal is closed
+ *
+ * @default false
+ */
+  resetDataAfterClose?: boolean
+  /**
+ * Callback when visible is set to true
+ * @returns {void}
+ */
+  onOpen?: (data: TData) => void
+  /**
+ * Callback when visible is set to false
+ * @returns {void}
+ */
+  onClose?: (returnValue: TReturnValue | undefined) => void
+}
 /**
  * A composable function to manage modal state in a Vue component.
  *
@@ -28,30 +52,7 @@ import { defer, TDefer } from '../utils/defer'
 export const useModal = <
   TData extends TModalData = TModalData,
   TReturnValue = any,
->(options: {
-  /**
-   * The initial data of the modal, should be a plain object like `{}`.
-   *
-   * @default {}
-   */
-  initData?: TData
-  /**
-   * Should the data be reset after the modal is closed
-   *
-   * @default false
-   */
-  resetDataAfterClose?: boolean
-  /**
-   * Callback when visible is set to true
-   * @returns {void}
-   */
-  onOpen?: (data: TData) => void
-  /**
-   * Callback when visible is set to false
-   * @returns {void}
-   */
-  onClose?: (returnValue: TReturnValue | undefined) => void
-} = {}): TModal<TData, TReturnValue> => {
+>(options: TUseModalOptions<TData, TReturnValue> = {}): TModal<TData, TReturnValue> => {
   const _options = {
     initValue: {},
     resetDataAfterClose: false,
@@ -76,14 +77,13 @@ export const useModal = <
 
   const _returnValue = ref<TReturnValue>()
   const returnValue = computed(() => _returnValue.value)
-  const setReturnValue = (value?: TReturnValue) => _returnValue.value = value
 
   let _wait: TDefer<TReturnValue | undefined>
   const resetData = () => _data.value = initData
 
   const open = (data?: TData) => {
     if (_visible) {
-      return _wait
+      return _wait.promise
     }
     visible.value = _visible = true
 
@@ -93,7 +93,7 @@ export const useModal = <
     _options.onOpen?.(_data.value)
 
     _wait = defer<TReturnValue | undefined>()
-    return _wait
+    return _wait.promise
   }
 
   const close = (returnValue?: TReturnValue) => {
@@ -109,6 +109,7 @@ export const useModal = <
     if (_options.resetDataAfterClose) {
       _data.value = initData
     }
+    _returnValue.value = returnValue
     _wait._resolve(returnValue)
 
     return r
