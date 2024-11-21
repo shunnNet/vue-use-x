@@ -37,6 +37,8 @@ export default [
           caughtErrorsIgnorePattern: '^_',
         },
       ],
+      'vue/one-component-per-file': 'off',
+      '@typescript-eslint/no-dynamic-delete': 'off',
     },
   },
 ]
