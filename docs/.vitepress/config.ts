@@ -8,7 +8,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Intro', link: '/intro' },
     ],
 
     sidebar: [
@@ -16,18 +16,19 @@ export default defineConfig({
         text: 'Modal',
         items: [
           { text: 'useModal', link: '/use-modal' },
+          { text: 'useRefModal', link: '/use-ref-modal' },
         ],
       },
-      {
-        text: 'Query',
-        items: [
-          { text: 'useQueryContext' },
-        ],
-      },
+      // {
+      //   text: 'Query',
+      //   items: [
+      //     { text: 'useQueryContext' },
+      //   ],
+      // },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+      { icon: 'github', link: 'https://github.com/shunnNet/vue-use-x' },
     ],
   },
 })

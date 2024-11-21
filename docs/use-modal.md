@@ -216,20 +216,6 @@ const modalA = useModal({
 })
 ```
 
-Some modal library open modal like `$refs.modal.open` or `$refs.modal.close`, to work with modal like this, you can call the methods inside the hooks.
-
-```ts{1,4,7}
-const modalRef = shallowRef()
-const modalA = useModal({ 
-  onOpen(data) {
-    modalRef.value?.open()
-  },
-  onClose(returnValue) {
-    modalRef.value?.close()
-  },
-})
-```
-
 ## Important note: visible
 Please note that, `visible` **does not means the real modal visibility**, same as the words like `.open()`,`onOpen`,`onClose`. 
 
