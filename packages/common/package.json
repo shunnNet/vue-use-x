@@ -1,0 +1,40 @@
+{
+  "name": "@vue-use-x/common",
+  "description": "Common utilities package of vue-use-x",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "repository": "https://github.com/shunnNet/vue-use-x",
+  "bugs": {
+    "url": "https://github.com/shunnNet/vue-use-x/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "composable"
+  ],
+  "author": "shunnNet",
+  "license": "MIT",
+  "scripts": {
+    "build": "unbuild",
+    "stub": "unbuild --stub"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "vue": "^3.0.0"
+  }
+}
