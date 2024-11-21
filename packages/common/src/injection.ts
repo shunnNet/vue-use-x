@@ -2,18 +2,20 @@ import { App, inject, InjectionKey, provide } from 'vue'
 
 /**
  * Injects a value from the provided key, if it is not found, an error is thrown
+ *
  * @param injectKey - The key to inject
  * @param errorMsg - The error message to throw if the injection is not found
  * @returns
  */
 export const ensureInjection = <T = unknown>(injectKey: string | InjectionKey<T>, errorMsg: string) => {
-  const injection = inject(injectKey)
+  const _s = Symbol()
+  const injection = inject(injectKey, _s as unknown as null)
 
-  if (!injection) {
+  if (injection === _s) {
     throw new Error(errorMsg)
   }
 
-  return injection
+  return injection as T
 }
 
 /**
@@ -29,7 +31,8 @@ export const createContext = <T = unknown>(options: {
   {
     provide: (ctx: T) => void
     provideByApp: (app: App, ctx: T) => void
-    inject: (errMsg: string) => T
+    inject: (defaults?: T) => T | undefined
+    ensureInjection: (errMsg: string) => T
     get key(): InjectionKey<T>
   }
 ) => {
@@ -57,7 +60,14 @@ export const createContext = <T = unknown>(options: {
      * @param errMsg - The error message to throw if the injection is not found
      * @returns The injected context value
      */
-    inject: (errMsg: string) => ensureInjection(_key, errMsg),
+    ensureInjection: (errMsg: string) => ensureInjection(_key, errMsg),
+
+    /**
+     * Injects the context value, if it is not found, returns undefined the defaults (if provided)
+     * @param defaults - The defaults value to return if the injection is not found
+     * @returns The injected context value or the defaults
+     */
+    inject: (defaults?: T) => inject(_key, defaults),
 
     /**
      * The key for providing and injecting the context value
