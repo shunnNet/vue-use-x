@@ -1,7 +1,7 @@
 {
   "name": "@vue-use-x/common",
   "description": "Common utilities package of vue-use-x",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
