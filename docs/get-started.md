@@ -39,8 +39,8 @@ ctx.provide({ name: "vue-use-x context" })
 ```
 
 ## Module Introduction
-[`@vue-use-x/modal`](./modal/use-modal): Provides a composable to toggle modals and pass data. It can be used alongside UI library modals/dialogs. When you need to manage the modal visibility state and pass data multiple times, `useModal` can fully showcase its value.
+[`@vue-use-x/modal`](./modal/index): Provides a composable to toggle modals and pass data. It can be used alongside UI library modals/dialogs. When you need to manage the modal visibility state and pass data multiple times, `useModal` can fully showcase its value.
 
-[`@vue-use-x/common`](./common): Provides general-purpose composables to simplify repetitive tasks during development, such as toggling loading states or using `provide`/`inject`, etc.
+[`@vue-use-x/common`](./common/index): Provides general-purpose composables to simplify repetitive tasks during development, such as toggling loading states or using `provide`/`inject`, etc.
 
 More modules will be added in the future.
