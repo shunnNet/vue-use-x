@@ -1,9 +1,11 @@
-# useRefModal
+# `useRefModal`
 Some modal library open modal like `$refs.modal.open` or `$refs.modal.close` methods that exposed by modal component. Similarly, native HTML `<dialog>` work in the same way.
 
 In this case, you can use `useRefModal`. 
 
-It essentially wraps `useModal`, so it is recommended that you first understand how to use [`useModal`](./use-modal.md).
+It essentially wraps `useModal`, so it is recommended that you first understand how to use [`useModal`](./use-modal).
+
+See [Installation and Why](./index).
 
 ## Usage
 First, you need to use `createRefModal` to define the actions to be executed when opening and closing the modal.
@@ -11,6 +13,8 @@ First, you need to use `createRefModal` to define the actions to be executed whe
 At the same time, you can access the data passed when using useModal `.open()` and the `returnValue` from `.close()`.
 
 ```ts
+import { createRefModal } from '@vue-use-x/modal';
+
 export const useRefModal = createRefModal<HTMLDialogElement | null>({
   open(modal, data) {
     modal?.showModal()
@@ -23,8 +27,10 @@ export const useRefModal = createRefModal<HTMLDialogElement | null>({
 
 Next, you will get `useRefModal`. The usage of `useRefModal` is the same as `useModal`, with the only difference being the first parameter. You need to pass in the `modal` or `modalRef`. For example:
 
-```vue{2-3,12}
+```vue{2,5-7,11}
 <script setup lang="ts">
+import { useRefModal } from './where-you-export-it';
+
 const dialogRef = shallowRef<HTMLDialogElement | null>(null)
 const modal = useRefModal(dialogRef, {
   // ... useModal options

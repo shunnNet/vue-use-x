@@ -1,6 +1,4 @@
 # `@vue-use-x/modal`
-`Modal` package of `vue-use-x`, see docs: https://vue-use-x.netlify.app/
-
 Provides a composable to toggle modals and pass data. It can be used alongside UI library modals/dialogs. When you need to manage the modal visibility state and pass data multiple times, `useModal` can fully showcase its value.
 
 ## Installation
@@ -9,8 +7,8 @@ npm i @vue-use-x/modal
 ```
 
 ## Functionalities
-- [useModal](https://vue-use-x.netlify.app/modal/use-modal): Targeting modal that open by props like `v-modal`
-- [useRefModal](https://vue-use-x.netlify.app/modal/use-ref-modal): Targeting modal that open by component exposed method.
+- [useModal](./use-modal): Targeting modal that open by props like `v-modal`
+- [useRefModal](./use-ref-modal): Targeting modal that open by component exposed method.
 
 ## Why
 When managing modal visibility in Vue components, we often find ourselves repeating the same patterns. This includes setting up reactive state for visibility, handling data passed to the modal, and managing callbacks for when the modal opens and closes.

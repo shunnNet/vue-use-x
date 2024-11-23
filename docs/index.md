@@ -9,14 +9,27 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /intro
+      link: /get-started
+    - theme: alt
+      text: Modal
+      link: /modal
+    - theme: alt
+      text: Common
+      link: /common
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon: 📝
+    title: Type Safe
+    details: Written in TypeScript with complete type annotations and JSDoc documentation.
+  # - icon: 🌳
+  #   title: Tree Shakable
+  #   details: Optimized for tree-shaking to minimize bundle size.
+  - icon: 🪟
+    title: Modal Management
+    details: Effortless management of modal states.
+  - icon: 🛠️
+    title: Common Utilities
+    details: Provide frequently used functionalities.
+
 ---
 

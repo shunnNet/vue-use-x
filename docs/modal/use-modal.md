@@ -1,51 +1,9 @@
-# useModal
+# `useModal`
 The `useModal` composable function is designed to manage the state of modals in Vue components. It provides a reactive way to control the visibility, data, and return values of modals, making it easier to handle complex modal interactions.
 
-## Why
-When managing modal visibility in Vue components, we often find ourselves repeating the same patterns. This includes setting up reactive state for visibility, handling data passed to the modal, and managing callbacks for when the modal opens and closes.
+See [Installation and Why](./index).
 
-```vue
-<script setup lang="ts">
-const modalVisibleA = ref(false)
-const dataA = ref({ message: "" })
-const openModalA = () => {
-  modalVisibleA.value = true
-  dataA.message.value = "hello world"
-}
-</script>
-<template>
-  <Modal v-model="modalVisibleA" :message="data.message" />
-  <button @click="openModalA">Open A</button>
-</template>
-
-```
-
-By using `useModal`, we can encapsulate these common patterns into a reusable composable function, making our code cleaner and more maintainable.
-
-```vue
-<script setup lang="ts">
-import { useModal } from '@vue-use-x/modal';
-
-const modalA = useModal({ 
-  initData: { message: "" }
-})
-</script>
-<template>
-  <Modal v-model="modalA.visible" :message="modalA.data.message" />
-  <button @click="modalA.open({ message: 'hello world' })">Open A</button>
-</template>
-
-```
-
-## Usage
-You need install the package `@vue-use-x/modal`
-
-```sh
-pnpm add @vue-use-x/modal
-```
-
-Then you can start to use it.
-
+## Usage Example
 ```vue
 <script setup lang="ts">
 import { useModal } from '@vue-use-x/modal';

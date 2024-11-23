@@ -1,15 +1,7 @@
-# 🛠️ vue-use-x
+# Get Started
+
 `vue-use-x` is an unofficial, reusable Vue 3 utility library, which includes many personal preferences.
 
-## Features
-- 📝 **Type Safe**: Written in TypeScript with complete type annotations and JSDoc documentation.
-- 🪟 **Modal Management**: Effortless management of modal states.
-- 🛠️ **Common Utilities**: Provide frequently used functionalities.
-
-## Documetation
-Check the [documentation](https://vue-use-x.netlify.app)
-
-## Intro
 If [`vueuse`](https://vueuse.org) is like an officially certified supermarket, then `vue-use-x` is more like a small, handcrafted boutique run by an individual. While it doesn’t have everything, you might just find tools that could be helpful.
 
 Unlike `vueuse`, `vue-use-x` is divided into several modules based on functionality, such as `modal`, `query`, and more. These modules are designed to address specific development scenarios and aim to reduce development pain points. However, it also includes modules with small yet general-purpose features, like `common`.
@@ -47,11 +39,8 @@ ctx.provide({ name: "vue-use-x context" })
 ```
 
 ## Module Introduction
-[`@vue-use-x/modal`](https://vue-use-x.netlify.app/modal/use-modal): Provides a composable to toggle modals and pass data. It can be used alongside UI library modals/dialogs. When you need to manage the modal visibility state and pass data multiple times, `useModal` can fully showcase its value.
+[`@vue-use-x/modal`](./modal/use-modal): Provides a composable to toggle modals and pass data. It can be used alongside UI library modals/dialogs. When you need to manage the modal visibility state and pass data multiple times, `useModal` can fully showcase its value.
 
-[`@vue-use-x/common`](https://vue-use-x.netlify.app/common): Provides general-purpose composables to simplify repetitive tasks during development, such as toggling loading states or using `provide`/`inject`, etc.
+[`@vue-use-x/common`](./common): Provides general-purpose composables to simplify repetitive tasks during development, such as toggling loading states or using `provide`/`inject`, etc.
 
 More modules will be added in the future.
-
-## License
-MIT
